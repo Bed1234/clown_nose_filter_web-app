@@ -1,5 +1,11 @@
+
 nose_X= 0;
 nose_Y = 0;
+
+
+function preload() {
+    clown_nose = loadImage('https://i.postimg.cc/6QXxm9SK/clown-nose.png');
+}
 
 function setup() {
    canvas = createCanvas(300,300);
@@ -24,19 +30,6 @@ console.log('PoseNet is initialized');
 }
 
 
-function draw(){
-    image(video, 0, 0,300, 300);
-
-
-    fill(255, 0 , 0);
-    stroke(255, 0, 0);
-    circle(nose_X, nose_Y, 20);
-
-
-}
-
-
-
 function gotPoses(results){
     if(results.length > 0 )
     {
@@ -48,6 +41,20 @@ function gotPoses(results){
          console.log("nose x = " + results[0].pose.nose.x);
          console.log("nose y = " + results[0].pose.nose.y);
     }
+}
+
+
+
+function draw(){
+    image(video, 0, 0,300, 300);
+
+    image(clown_nose, nose_X, nose_Y, 30, 30)
+
+   //fill(255, 0 , 0);
+    //stroke(255, 0, 0);
+    //circle(nose_X, nose_Y, 20);
+
+
 }
 
 
